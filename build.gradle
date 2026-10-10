@@ -1,0 +1,73 @@
+plugins {
+	id 'net.neoforged.moddev' version "${moddev_version}"
+	id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+def modProperties = [
+	mod_id: project.mod_id,
+	version: project.version,
+	minecraft_version_range: project.minecraft_version_range,
+	neo_version_range: project.neo_version_range,
+	loader_version_range: project.loader_version_range,
+]
+
+processResources {
+	inputs.properties modProperties
+
+	filesMatching("META-INF/neoforge.mods.toml") {
+		expand modProperties
+	}
+}
+
+java {
+	withSourcesJar()
+
+	toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+jar {
+	inputs.property "archivesName", project.base.archivesName
+	version = null
+}
+
+neoForge {
+	version = project.neo_version
+
+	runs {
+		client {
+			client()
+			gameDirectory = project.file('run')
+		}
+		server {
+			server()
+			gameDirectory = project.file('run-server')
+			programArgument '--nogui'
+		}
+	}
+
+	mods {
+		"${mod_id}" {
+			sourceSet(sourceSets.main)
+		}
+	}
+}
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			artifactId = project.archives_base_name
+			from components.java
+		}
+	}
+
+	repositories {
+		// Add repositories to publish to here, if needed later.
+	}
+}
