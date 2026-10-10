@@ -1,9 +1,10 @@
 # Drakonix Sky Adventure Mod
 
-Standalone NeoForge 1.21.1 mod for the `MinecraftModpackDrakonixSkyAdventure` pack,
-covering the gameplay pieces no off-the-shelf mod provides. Built jar gets pulled into
-the pack via `packwiz url add` once released (same pattern as that pack's
-`waylandcraft` dependency).
+Standalone NeoForge 1.21.1 mod for the
+[`MinecraftModpackDrakonixSkyAdventure`](https://github.com/meltingscales/MinecraftModpackDrakonixSkyAdventure)
+pack, covering the gameplay pieces no off-the-shelf mod provides. Built jar gets
+pulled into the pack via `packwiz url add` once released (same pattern as that
+pack's `waylandcraft` dependency).
 
 ## What's in it
 
