@@ -39,13 +39,13 @@ the pack via `packwiz url add` once released (same pattern as that pack's
 ## Building
 
 ```
-./gradlew build
+just build          # or ./gradlew build
 ```
 
-Output jar: `build/libs/drakonix-sky-adventure-mod-<version>.jar`.
+Output jar: `build/libs/drakonix-sky-adventure-mod.jar`.
 
 ## Dev run
 
 ```
-./gradlew runServer   # or runClient
+just run-server      # or just run-client
 ```
